@@ -9,14 +9,43 @@ output: html_document
 ### Question 1:
 
 Using a loop, print the integers from 1 to 50. 
+```{r}
+x=1:50
+for (i in 1:length(x)){
+  print(i)
+}
+
+```
+
 
 ### Question 2:
 
 A.  Using a loop, add all the integers between 0 and 1000.
+```{r}
+final=0
+y=0:999
+for (i in y){
+  final<-sum(i,i+1)+final
+}
+ 
+```
+
 
 B. Now, add all the EVEN integers between 0 and 1000 (hint: use seq())
+```{r}
+z=seq(0,98,by=2)
+even=0
+for (i in z){
+  even<-sum(i,i+2)+even
+}
+```
+
 
 C. Now, repeat A and B WITHOUT using a loop.
+```{r}
+
+```
+
 
 ### Question 3:
 
