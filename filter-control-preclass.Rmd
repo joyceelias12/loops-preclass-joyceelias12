@@ -22,10 +22,11 @@ for (i in 1:length(x)){
 
 A.  Using a loop, add all the integers between 0 and 1000.
 ```{r}
+
+y=1:999
 final=0
-y=0:999
 for (i in y){
-  final<-sum(i,i+1)+final
+  final<-sum(i)+final
 }
  
 ```
@@ -33,17 +34,23 @@ for (i in y){
 
 B. Now, add all the EVEN integers between 0 and 1000 (hint: use seq())
 ```{r}
-z=seq(0,98,by=2)
 even=0
+z=seq(2,98,by=2)
 for (i in z){
-  even<-sum(i,i+2)+even
+  even<-sum(i)+even
 }
 ```
 
 
 C. Now, repeat A and B WITHOUT using a loop.
 ```{r}
+## Part A repeat without using a loop
+t=1:999
+part_a_no_loop<-sum(t)
 
+## Part B repeat without using a loop
+u=seq(2,98,by=2)
+part_b_no_loop<-sum(u)
 ```
 
 
