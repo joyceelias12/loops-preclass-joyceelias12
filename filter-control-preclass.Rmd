@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Sep 27th Pre Class"
 output: html_document
 ---
 
@@ -26,7 +26,7 @@ A.  Using a loop, add all the integers between 0 and 1000.
 y=1:999
 final=0
 for (i in y){
-  final<-sum(i)+final
+  final<-sum(final,i)
 }
  
 ```
@@ -37,7 +37,7 @@ B. Now, add all the EVEN integers between 0 and 1000 (hint: use seq())
 even=0
 z=seq(2,98,by=2)
 for (i in z){
-  even<-sum(i)+even
+  even<-sum(i,even)
 }
 ```
 
@@ -82,15 +82,17 @@ survey.clean<-data.frame(
 for(i in 1:length(x)){ 
     survey.clean[survey.clean==x[i]]<-NA
 }
-
-cbind(survey$participant,survey.clean)
-
+survey.clean<-
+survey.clean%>%
+  mutate(participant=survey$participant)%>%
+select(participant,q1,q2,q3,q4,q5)
 ```
 
 
 B. Now, again using a loop, add a new column to the dataframe called “invalid.answers” that indicates, for each participant, how many bad answers they gave.
 
 ```{r}
+survey.clean<-
 survey.clean %>%
   mutate(invalid.answers= rowSums(is.na(survey.clean)))
 ```
