@@ -10,7 +10,7 @@ output: html_document
 
 Using a loop, print the integers from 1 to 50. 
 ```{r}
-x=1:50
+x=1:50  
 for (i in 1:length(x)){
   print(i)
 }
@@ -23,22 +23,23 @@ for (i in 1:length(x)){
 A.  Using a loop, add all the integers between 0 and 1000.
 ```{r}
 
-y=1:999
+y=1:999  # because the question said the numbers between 0 and 1000 I did NOT include 0 and 1000
 final=0
 for (i in y){
   final<-sum(final,i)
 }
- 
+ final
 ```
 
 
 B. Now, add all the EVEN integers between 0 and 1000 (hint: use seq())
 ```{r}
-even=0
+even=0  # because the problem says integers between 0 and 1000 I did NOT include the endpoint values
 z=seq(2,98,by=2)
 for (i in z){
   even<-sum(i,even)
 }
+even
 ```
 
 
@@ -48,9 +49,13 @@ C. Now, repeat A and B WITHOUT using a loop.
 t=1:999
 part_a_no_loop<-sum(t)
 
+part_a_no_loop
+
 ## Part B repeat without using a loop
 u=seq(2,98,by=2)
 part_b_no_loop<-sum(u)
+
+part_b_no_loop
 ```
 
 
@@ -58,7 +63,7 @@ part_b_no_loop<-sum(u)
 
 Here is a dataframe of survey data containing 5 questions :
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 survey <- data.frame(
                      "participant" = c(1, 2, 3, 4, 5, 6),
                      "q1" = c(5, 3, 2, 7, 11, 0),
@@ -72,6 +77,7 @@ The response to each question should be an integer between 1 and 5. Obviously, w
 
 A. Using a loop, create a new dataframe called survey.clean where all the invalid values (those that are not integers between 1 and 5) are set to NA.
 ```{r}
+library(dplyr)
 x=survey[survey>5|survey<1]
 survey.clean<-data.frame(
                      "q1" = c(5, 3, 2, 7, 11, 0),
@@ -86,6 +92,8 @@ survey.clean<-
 survey.clean%>%
   mutate(participant=survey$participant)%>%
 select(participant,q1,q2,q3,q4,q5)
+
+survey.clean
 ```
 
 
@@ -95,5 +103,7 @@ B. Now, again using a loop, add a new column to the dataframe called “invalid.
 survey.clean<-
 survey.clean %>%
   mutate(invalid.answers= rowSums(is.na(survey.clean)))
+
+survey.clean
 ```
 
